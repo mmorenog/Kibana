@@ -1,0 +1,7 @@
+SNORT_SIMPLE %{DATA:signature};%{IP:ip_src};(?:%{POSINT:port_src}|\N);
+      %{IP:ip_dst};(?:%{POSINT:port_dst}|\N);
+      %{DATA:proto};%{TIMESTAMP:timestamp}
+ 
+DATE_ENG %{YEAR}[./-]%{MONTHNUM}[./-]%{MONTHDAY}
+ 
+TIMESTAMP %{DATE_ENG} %{TIME}
