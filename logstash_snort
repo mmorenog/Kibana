@@ -1,0 +1,22 @@
+input {
+  file {
+	start_position => "beginning"
+	path => [ "snortdump.csv" ]
+  }
+}
+ 
+filter {
+  grok {
+  	patterns_dir => "./patterns" #Ubicación de GrokPatternsSnort.txt
+  	match => { "message" => "%{SNORT_SIMPLE}" }
+  }
+ 
+  date {
+  	match => [ "timestamp", "yyyy-MM-dd HH:mm:ss" ]
+  	locale => "en"
+  }
+}
+ 
+output {
+  elasticsearch { embedded => true }
+}
