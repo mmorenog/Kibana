@@ -1,0 +1,6 @@
+#Integración de Plaso con Logstash
+#Única línea temporal de diferentes logs
+#tips
+
+$ log2timeline.py /tmp/XXXXX.dump image.dd
+$ psort.py -o elastic /tmp/XXXXX.dump
